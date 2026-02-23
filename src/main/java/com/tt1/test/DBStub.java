@@ -3,11 +3,11 @@ package com.tt1.test;
 import java.util.List;
 
 public class DBStub implements DB {
-    public boolean addToDo(ToDo t){
+    public void addToDo(ToDo t){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public boolean removeToDo(String name){
+    public void removeToDo(String name){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -15,7 +15,7 @@ public class DBStub implements DB {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public boolean updateToDo(String name, ToDo t){
+    public void updateToDo(String name, ToDo t){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -27,11 +27,11 @@ public class DBStub implements DB {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public boolean addEmail(String email) {
+    public void addEmail(String email) {
         throw  new UnsupportedOperationException("Not supported yet.");
     }
 
-    public boolean removeEmail(String email) {
+    public void removeEmail(String email) {
         throw  new UnsupportedOperationException("Not supported yet.");
     }
 

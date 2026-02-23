@@ -51,4 +51,12 @@ public class ToDo implements Serializable {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
+
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (o instanceof ToDo t){
+            return  this.name.equals(t.name) && this.limit.equals(t.limit);
+        }
+        return false;
+    }
 }
