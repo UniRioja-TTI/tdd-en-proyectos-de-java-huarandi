@@ -1,12 +1,12 @@
 package com.tt1.test;
 
+import java.util.Date;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Date;
-
 public class TestDB {
-    private DB db = new DBStub();
+    private final DB db = new DBStub();
 
     private final ToDo t1 = new ToDo("1", "1", new Date(), false);
     private final ToDo t2 = new ToDo("2", "2", new Date(), false);
@@ -40,9 +40,17 @@ public class TestDB {
     public void updateToDo(){
         db.addToDo(t1);
 
+        final String nname = "nname";
         final String ndesc = "ndesc";
-        db.updateToDo(t1.getName(), new ToDo(t1.getName(), ndesc, t1.getLimit(), t1.isCompleted()));
-        Assertions.assertEquals(ndesc, db.getToDo(t1.getName()).getDescription());
+        final Date nlimit = new Date();
+        final boolean ncomp = !t1.isCompleted();
+
+        db.updateToDo(t1.getName(), new ToDo(nname, ndesc, nlimit, ncomp));
+        
+        Assertions.assertEquals(nname, t1.getName());
+        Assertions.assertEquals(ndesc, t1.getDescription());
+        Assertions.assertEquals(nlimit, t1.getLimit());
+        Assertions.assertEquals(ncomp, t1.isCompleted());
     }
 
     @Test

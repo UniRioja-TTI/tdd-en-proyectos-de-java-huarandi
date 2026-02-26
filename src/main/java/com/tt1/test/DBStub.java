@@ -1,45 +1,83 @@
 package com.tt1.test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DBStub implements DB {
+    private final List<ToDo> td = new ArrayList<>();
+    private final List<String> em = new ArrayList<>();
+    
+    @Override
     public void addToDo(ToDo t){
-        throw new UnsupportedOperationException("Not supported yet.");
+        td.add(t);
     }
 
+    @Override
     public void removeToDo(String name){
-        throw new UnsupportedOperationException("Not supported yet.");
+        for(ToDo t: td){
+            if(t.getName().equals(name)){
+                td.remove(t);
+                return;
+            }
+        }
     }
 
+    @Override
     public ToDo getToDo(String name){
-        throw new UnsupportedOperationException("Not supported yet.");
+        for(ToDo t: td){
+            if(t.getName().equals(name)) return t;
+        }
+        return null;
     }
 
+    @Override
     public void updateToDo(String name, ToDo t){
-        throw new UnsupportedOperationException("Not supported yet.");
+        for(ToDo to: td){
+            if(to.getName().equals(name)){
+                to.setName(t.getName());
+                to.setDescription(t.getDescription());
+                to.setLimit(t.getLimit());
+                to.setCompleted(t.isCompleted());
+                return;
+            }
+        }
     }
 
+    @Override
     public boolean existToDo(String name) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        for(ToDo t: td){
+            if(t.getName().equals(name)) return true;
+        }
+        return false;
     }
 
+    @Override
     public List<ToDo> getAllToDo() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        //Sería mejor práctica hacer una deepcopy, pero como es un stub, vamos a mantenerlo simple.
+        return td;
     }
 
+    @Override
     public void addEmail(String email) {
-        throw  new UnsupportedOperationException("Not supported yet.");
+        em.add(email);
     }
 
+    @Override
     public void removeEmail(String email) {
-        throw  new UnsupportedOperationException("Not supported yet.");
+        em.remove(email);
     }
 
+    @Override
     public List<String> getAllEmail() {
-        throw  new UnsupportedOperationException("Not supported yet.");
+        //Igual que para getAllToDo().
+        return em;
     }
-
+    
+    @Override
     public boolean existEmail(String email) {
-        throw  new UnsupportedOperationException("Not supported yet.");
+        for(String e: em){
+            if(e.equals(email)) return true;
+        }
+        return false;
     }
 }
