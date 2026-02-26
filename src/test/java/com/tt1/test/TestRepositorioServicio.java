@@ -56,14 +56,16 @@ public class TestRepositorioServicio {
     @Test
     public void completeToDo() {
         ToDo t = ser.getUncompletedToDos().getFirst();
-        ser.completeToDo(t);
+        Assertions.assertTrue(ser.completeToDo(t));
         Assertions.assertTrue(repo.getToDo(t.getName()).isCompleted());
+        Assertions.assertFalse(ser.completeToDo(new ToDo("no existente", "a", new Date(), false)));
     }
 
     @Test
     public void addEmail() {
         String em1 = "em134";
-        ser.addEmail(em1);
+        Assertions.assertTrue(ser.addEmail(em1));
         Assertions.assertTrue(repo.getAllEmail().contains(em1));
+        Assertions.assertFalse(ser.addEmail(em1));
     }
 }
