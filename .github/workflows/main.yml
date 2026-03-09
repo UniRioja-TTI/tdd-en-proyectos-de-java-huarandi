@@ -18,5 +18,5 @@ jobs:
           javadoc-branch: javadoc
           java-version: 17
           target-folder: javadoc
-          project: mave
+          project: maven
           custom-command: javadoc -d javadoc -sourcepath src/main/java/com/tt1/test/*
